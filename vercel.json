@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/recommend",
+      "destination": "https://YOUR-RAILWAY-DOMAIN.up.railway.app/recommend"
+    },
+    {
+      "source": "/cities",
+      "destination": "https://YOUR-RAILWAY-DOMAIN.up.railway.app/cities"
+    },
+    {
+      "source": "/health",
+      "destination": "https://YOUR-RAILWAY-DOMAIN.up.railway.app/health"
+    }
+  ]
+}

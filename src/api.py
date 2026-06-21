@@ -16,6 +16,11 @@ if hasattr(sys.stdout, "reconfigure"):
 
 load_dotenv()
 
+# Ensure 'src' is in the python search path (critical for uvicorn imports)
+src_dir = os.path.dirname(os.path.abspath(__file__))
+if src_dir not in sys.path:
+    sys.path.insert(0, src_dir)
+
 # ---------------------------------------------------------------------------
 # Import Orchestrator (lazy so startup doesn't crash without a DB)
 # ---------------------------------------------------------------------------
