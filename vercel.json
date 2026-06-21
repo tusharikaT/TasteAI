@@ -3,15 +3,15 @@
   "rewrites": [
     {
       "source": "/recommend",
-      "destination": "https://YOUR-RAILWAY-DOMAIN.up.railway.app/recommend"
+      "destination": "https://tasteai-production.up.railway.app/recommend"
     },
     {
       "source": "/cities",
-      "destination": "https://YOUR-RAILWAY-DOMAIN.up.railway.app/cities"
+      "destination": "https://tasteai-production.up.railway.app/cities"
     },
     {
       "source": "/health",
-      "destination": "https://YOUR-RAILWAY-DOMAIN.up.railway.app/health"
+      "destination": "https://tasteai-production.up.railway.app/health"
     }
   ]
 }
