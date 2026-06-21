@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/recommend",
+      "destination": "https://tasteai-production.up.railway.app/recommend"
+    },
+    {
+      "source": "/cities",
+      "destination": "https://tasteai-production.up.railway.app/cities"
+    },
+    {
+      "source": "/health",
+      "destination": "https://tasteai-production.up.railway.app/health"
+    }
+  ]
+}
