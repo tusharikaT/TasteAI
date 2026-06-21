@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TasteAI - No Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed": "#002204",
+                      "on-secondary-fixed": "#281900",
+                      "error-container": "#93000a",
+                      "surface-container-low": "#1c1b1b",
+                      "surface-container-highest": "#353534",
+                      "primary-container": "#ff5722",
+                      "primary-fixed-dim": "#ffb5a0",
+                      "on-secondary": "#432c00",
+                      "surface-dim": "#131313",
+                      "on-tertiary-container": "#003208",
+                      "secondary-container": "#feb300",
+                      "tertiary-container": "#41a447",
+                      "secondary": "#ffd799",
+                      "tertiary-fixed": "#94f990",
+                      "on-surface": "#e5e2e1",
+                      "outline-variant": "#5b4039",
+                      "on-primary-fixed": "#3b0900",
+                      "on-background": "#e5e2e1",
+                      "tertiary-fixed-dim": "#78dc77",
+                      "secondary-fixed-dim": "#ffba38",
+                      "outline": "#ab8980",
+                      "tertiary": "#78dc77",
+                      "surface-container": "#201f1f",
+                      "surface-tint": "#ffb5a0",
+                      "surface": "#131313",
+                      "on-surface-variant": "#e4beb4",
+                      "on-primary-fixed-variant": "#862200",
+                      "secondary-fixed": "#ffdeac",
+                      "on-secondary-container": "#6a4800",
+                      "on-error": "#690005",
+                      "background": "#131313",
+                      "inverse-primary": "#b02f00",
+                      "surface-bright": "#3a3939",
+                      "inverse-surface": "#e5e2e1",
+                      "primary-fixed": "#ffdbd1",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-container": "#541200",
+                      "inverse-on-surface": "#313030",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container-lowest": "#0e0e0e",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed-variant": "#604100",
+                      "on-primary": "#5f1500",
+                      "primary": "#ffb5a0",
+                      "on-tertiary": "#00390a",
+                      "on-tertiary-fixed-variant": "#005313",
+                      "surface-variant": "#353534"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-lg": "32px",
+                      "margin-desktop": "48px",
+                      "gutter": "24px",
+                      "stack-md": "16px",
+                      "margin-mobile": "20px",
+                      "stack-sm": "8px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "display-hero-mobile": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-hero": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "display-hero-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "42px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-hero": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-[0px_10px_30px_rgba(255,87,34,0.15)]">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-display-hero-mobile text-display-hero-mobile md:font-display-hero md:text-display-hero text-primary tracking-tight">
+                TasteAI
+            </div>
+<button class="font-label-md text-label-md text-primary bg-primary/10 hover:bg-primary/20 px-4 py-2 rounded-full transition-all duration-300 active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                New Search
+            </button>
+</div>
+</nav>
+<!-- Side Navigation Bar (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-64 fixed left-0 top-0 pt-[88px] bg-surface-container dark:bg-surface-dim shadow-lg z-40 transition-all duration-300 border-r border-surface-container-low">
+<div class="px-6 py-stack-lg flex-1 overflow-y-auto">
+<div class="mb-stack-lg pl-4">
+<h2 class="font-label-md text-label-md text-on-surface font-semibold tracking-wider uppercase opacity-80">TasteAI Explorer</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Premium Culinary Guide</p>
+</div>
+<nav class="flex flex-col gap-2">
+<!-- Active Item -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary border-r-4 border-primary bg-primary/10 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-body-md text-body-md font-medium">Discover</span>
+</a>
+<!-- Inactive Items -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all duration-300" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-body-md text-body-md">Saved</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all duration-300" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">History</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+</nav>
+</div>
+<div class="p-6 border-t border-surface-container-low">
+<button class="w-full flex items-center justify-center gap-2 font-label-md text-label-md text-secondary-container bg-surface-bright hover:bg-surface-highest px-4 py-3 rounded-xl transition-all duration-300 border border-secondary-container/20">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+                Upgrade to Gold
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-[100px] pb-[80px] md:pl-64 min-h-screen flex items-center justify-center relative overflow-hidden">
+<!-- Background Atmospheric Glow -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
+<div class="w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-primary/5 rounded-full blur-[100px] opacity-50"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop text-center max-w-2xl mx-auto w-full">
+<!-- Illustration Container -->
+<div class="relative w-48 h-48 md:w-64 md:h-64 mb-stack-lg group">
+<!-- Warm Glow Behind Image -->
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-75 group-hover:scale-100 transition-transform duration-700 ease-in-out"></div>
+<img class="relative z-10 w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(255,87,34,0.2)] animate-[pulse_4s_ease-in-out_infinite]" data-alt="A highly stylized, minimalist line-art illustration of a friendly robot chef looking confused, featuring a prominent question mark icon. The artwork is designed for a premium dark mode interface, utilizing crisp, high-contrast white strokes against a completely transparent background. Subtle, warm glowing accents in glowing orange (hex #ff5722) highlight the robot's eyes and the question mark, providing a sense of depth and modern glassmorphism aesthetic. The mood is approachable yet sophisticated, fitting an upscale culinary AI application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF4PxzlE5dygvr22brQz3aY9S2x6oEJXVqGmCqnVNSUsOY7Kgho7KDOSyjcm3PAaPPaCJ-kVm9VMBbigeRxA7bfZA7di7KnOK_OIjU0VL7169-JjRefisvUppVrF0OzhTb7mYYmggz8t6gYjtlD6AaZJ1Pqwg9XSJxPg-6M-FCGJqqBuEfUAUjlpvdIyZWx4_ERsUS8BtwuyrnpBlxFZqBq5vgwtz-1TSPoDwrKEfeGGrlwraPA-6QupCkMwQC9hw4zeHBkc3Q8A"/>
+</div>
+<!-- Typography -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-stack-sm tracking-tight">
+                No Restaurants Found
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-stack-lg leading-relaxed">
+                We couldn't find matches for your exact filters. Try broadening your search.
+            </p>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-8 py-4 rounded-xl font-label-md text-label-md font-semibold bg-primary text-on-primary hover:bg-primary-fixed-dim transition-all duration-300 active:scale-95 shadow-[0px_4px_20px_rgba(255,87,34,0.3)] hover:shadow-[0px_8px_30px_rgba(255,87,34,0.4)] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+                    Adjust Preferences
+                </button>
+<button class="w-full sm:w-auto px-8 py-4 rounded-xl font-label-md text-label-md font-medium text-primary border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">filter_alt_off</span>
+                    Clear All Filters
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/90 backdrop-blur-xl border-t border-white/5 pb-safe">
+<div class="flex justify-around items-center px-2 py-3">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<div class="px-4 py-1 rounded-full bg-primary/15">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">explore</span>
+</div>
+<span class="font-label-sm text-label-sm">Discover</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<div class="px-4 py-1 rounded-full hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-[24px]">bookmark</span>
+</div>
+<span class="font-label-sm text-label-sm">Saved</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<div class="px-4 py-1 rounded-full hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-[24px]">history</span>
+</div>
+<span class="font-label-sm text-label-sm">History</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<div class="px-4 py-1 rounded-full hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</div>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

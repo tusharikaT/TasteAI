@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TasteAI - Your Premium Culinary Guide</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="style.css" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                  "on-tertiary-fixed": "#002204",
+                  "on-secondary-fixed": "#281900",
+                  "error-container": "#93000a",
+                  "surface-container-low": "#1c1b1b",
+                  "surface-container-highest": "#353534",
+                  "primary-container": "#ff5722",
+                  "primary-fixed-dim": "#ffb5a0",
+                  "on-secondary": "#432c00",
+                  "surface-dim": "#131313",
+                  "on-tertiary-container": "#003208",
+                  "secondary-container": "#feb300",
+                  "tertiary-container": "#41a447",
+                  "secondary": "#ffd799",
+                  "tertiary-fixed": "#94f990",
+                  "on-surface": "#e5e2e1",
+                  "outline-variant": "#5b4039",
+                  "on-primary-fixed": "#3b0900",
+                  "on-background": "#e5e2e1",
+                  "tertiary-fixed-dim": "#78dc77",
+                  "secondary-fixed-dim": "#ffba38",
+                  "outline": "#ab8980",
+                  "tertiary": "#78dc77",
+                  "surface-container": "#201f1f",
+                  "surface-tint": "#ffb5a0",
+                  "surface": "#131313",
+                  "on-surface-variant": "#e4beb4",
+                  "on-primary-fixed-variant": "#862200",
+                  "secondary-fixed": "#ffdeac",
+                  "on-secondary-container": "#6a4800",
+                  "on-error": "#690005",
+                  "background": "#131313",
+                  "inverse-primary": "#b02f00",
+                  "surface-bright": "#3a3939",
+                  "inverse-surface": "#e5e2e1",
+                  "primary-fixed": "#ffdbd1",
+                  "on-error-container": "#ffdad6",
+                  "on-primary-container": "#541200",
+                  "inverse-on-surface": "#313030",
+                  "surface-container-high": "#2a2a2a",
+                  "surface-container-lowest": "#0e0e0e",
+                  "error": "#ffb4ab",
+                  "on-secondary-fixed-variant": "#604100",
+                  "on-primary": "#5f1500",
+                  "primary": "#ffb5a0",
+                  "on-tertiary": "#00390a",
+                  "on-tertiary-fixed-variant": "#005313",
+                  "surface-variant": "#353534"
+              },
+              borderRadius: {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+              },
+              spacing: {
+                  "stack-lg": "32px",
+                  "margin-desktop": "48px",
+                  "gutter": "24px",
+                  "stack-md": "16px",
+                  "margin-mobile": "20px",
+                  "stack-sm": "8px",
+                  "container-max": "1280px"
+              },
+              fontFamily: {
+                  "display-hero-mobile": ["Playfair Display"],
+                  "body-lg": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "label-md": ["Inter"],
+                  "body-md": ["Inter"],
+                  "label-sm": ["Inter"],
+                  "headline-lg": ["Playfair Display"],
+                  "display-hero": ["Playfair Display"]
+              },
+              fontSize: {
+                  "display-hero-mobile": ["36px", { lineHeight: "42px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                  "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                  "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                  "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "500" }],
+                  "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                  "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                  "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+                  "display-hero": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container flex flex-col overflow-x-hidden">
+
+    <!-- Global Top Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-[0px_10px_30px_rgba(255,87,34,0.15)]">
+        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+            <div class="font-display-hero-mobile text-display-hero-mobile text-primary tracking-tight md:font-display-hero md:text-display-hero cursor-pointer" onclick="showView('view-landing')">TasteAI</div>
+            <div class="flex gap-4">
+                <button onclick="showView('view-preferences')" class="bg-primary-container text-on-primary-container hover:opacity-80 transition-opacity active:scale-95 transition-transform px-6 py-2 rounded-full font-label-md text-label-md flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">search</span> New Search
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION: Landing Page -->
+    <section id="view-landing" class="view-section active flex-col relative pt-[72px] md:pt-[88px] min-h-screen">
+        <div class="relative flex-grow flex flex-col items-center justify-center min-h-[819px] px-margin-mobile md:px-margin-desktop text-center overflow-hidden">
+            <div class="absolute inset-0 w-full h-full -z-10" style="display:block;">
+                <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+            </div>
+            <div class="absolute inset-0 bg-background/60 -z-10"></div> 
+            <h1 class="font-display-hero-mobile text-display-hero-mobile md:font-display-hero md:text-display-hero text-on-surface max-w-3xl mb-stack-md drop-shadow-lg">
+                Discover Your Next Favourite Restaurant
+            </h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-stack-lg drop-shadow-md">
+                Tell us your city and craving — our AI does the rest.
+            </p>
+            <button onclick="showView('view-preferences')" class="bg-primary-container text-on-primary-container hover:opacity-80 transition-opacity active:scale-95 transition-transform px-8 py-4 rounded-full font-label-md text-label-md flex items-center gap-2 glow-pulse">
+                Find My Restaurant
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+        
+        <div class="bg-surface-container py-stack-lg md:py-margin-desktop px-margin-mobile md:px-margin-desktop z-10 relative shadow-[0px_-10px_30px_rgba(0,0,0,0.5)]">
+            <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <div class="bg-surface-container-low p-stack-md rounded-xl shadow-[0px_10px_30px_rgba(255,87,34,0.05)] border border-white/5 hover:bg-surface-bright transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-stack-md group-hover:bg-primary/20 transition-colors">
+                        <span class="material-symbols-outlined text-primary text-2xl">star</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">AI-Ranked Results</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">We analyze millions of reviews to rank spots based on your exact vibe and palate.</p>
+                </div>
+                <div class="bg-surface-container-low p-stack-md rounded-xl shadow-[0px_10px_30px_rgba(255,87,34,0.05)] border border-white/5 hover:bg-surface-bright transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center mb-stack-md group-hover:bg-secondary-container/20 transition-colors">
+                        <span class="material-symbols-outlined text-secondary-container text-2xl">location_on</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Hyper-Local Filtering</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Find hidden gems in specific neighborhoods, down to the street level.</p>
+                </div>
+                <div class="bg-surface-container-low p-stack-md rounded-xl shadow-[0px_10px_30px_rgba(255,87,34,0.05)] border border-white/5 hover:bg-surface-bright transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center mb-stack-md group-hover:bg-tertiary-container/20 transition-colors">
+                        <span class="material-symbols-outlined text-tertiary-container text-2xl">tips_and_updates</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Explained Choices</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Understand exactly *why* a restaurant is recommended for your specific request.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Preferences -->
+    <section id="view-preferences" class="view-section flex-col pt-[100px] pb-stack-lg px-margin-mobile md:px-margin-desktop relative overflow-hidden min-h-screen">
+        <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+            <div class="bg-cover bg-center w-full h-full absolute inset-0 mix-blend-screen" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDkcibZQuBkbvrLx4AIRl9PtkbEeoy69mN13wI2KIo6zDlSAufCTybajA9Gj3Ukz_8hkSVPxrdWeXC8tf26tE-jlBxWNhaWDwfcD6eiYr6PRICvxDnor9ODVhzaoMlgfk6BQgVGZ1N1XxT1kBWZIFMb2NYBlys6YvrDngUOou-ic6qvZm3kucWNO5xv0fQsq3h3GotrxrnfYIpFZtKSItSUpcFe_z7yKHxg3uYxfeH2zQCHG85Y_fjsszyJuEutjy3b298CBE-llQ')"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+        </div>
+
+        <div class="glass-card rounded-xl w-full max-w-[520px] mx-auto p-stack-lg relative z-10 animate-[fadeIn_0.5s_ease-out]">
+            <header class="mb-stack-lg text-center">
+                <h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-2 tracking-tight">Set Your Preferences</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant">Customize your search to find the perfect dining experience.</p>
+            </header>
+            
+            <form id="preferences-form" class="space-y-stack-md flex flex-col">
+                <div class="flex flex-col gap-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2" for="location">
+                        <span class="material-symbols-outlined text-[18px]">location_on</span> Location
+                    </label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">search</span>
+                        <!-- REPLACED TEXT INPUT WITH SELECT -->
+                        <select id="location" required class="w-full bg-surface-container-low border border-outline-variant text-on-surface font-body-md text-body-md rounded-lg py-3 pl-12 pr-4 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors appearance-none cursor-pointer">
+                            <option value="" disabled selected>Select a city...</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">payments</span> Budget Level
+                    </label>
+                    <div class="flex p-1 bg-surface-container-low rounded-lg border border-outline-variant relative isolate">
+                        <div class="absolute inset-y-1 left-1 w-[calc(33.33%-4px)] bg-surface-bright rounded shadow-sm z-0 pointer-events-none transition-all duration-300" id="budget-indicator"></div>
+                        <label class="flex-1 text-center py-2 relative z-10 cursor-pointer">
+                            <input class="peer sr-only" name="budget" type="radio" value="low" checked/>
+                            <span class="font-label-md text-label-md text-on-surface-variant peer-checked:text-on-surface transition-colors">Low ($)</span>
+                        </label>
+                        <label class="flex-1 text-center py-2 relative z-10 cursor-pointer">
+                            <input class="peer sr-only" name="budget" type="radio" value="medium"/>
+                            <span class="font-label-md text-label-md text-on-surface-variant peer-checked:text-on-surface transition-colors">Medium ($$)</span>
+                        </label>
+                        <label class="flex-1 text-center py-2 relative z-10 cursor-pointer">
+                            <input class="peer sr-only" name="budget" type="radio" value="high"/>
+                            <span class="font-label-md text-label-md text-on-surface-variant peer-checked:text-on-surface transition-colors">High ($$$)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">restaurant</span> Cuisine Types
+                    </label>
+                    <div class="flex gap-2 overflow-x-auto chip-scroll pb-2 -mx-2 px-2 mask-edges" id="cuisine-container">
+                        <!-- Cuisines will be populated here, but statically some common ones -->
+                        <label class="cursor-pointer whitespace-nowrap shrink-0">
+                            <input class="peer sr-only cuisine-checkbox" type="checkbox" value="Italian"/>
+                            <div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-primary/20 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-surface-bright">Italian</div>
+                        </label>
+                        <label class="cursor-pointer whitespace-nowrap shrink-0">
+                            <input class="peer sr-only cuisine-checkbox" type="checkbox" value="Cafe"/>
+                            <div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-primary/20 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-surface-bright">Cafe</div>
+                        </label>
+                        <label class="cursor-pointer whitespace-nowrap shrink-0">
+                            <input class="peer sr-only cuisine-checkbox" type="checkbox" value="North Indian"/>
+                            <div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-primary/20 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-surface-bright">North Indian</div>
+                        </label>
+                        <label class="cursor-pointer whitespace-nowrap shrink-0">
+                            <input class="peer sr-only cuisine-checkbox" type="checkbox" value="Chinese"/>
+                            <div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-primary/20 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-surface-bright">Chinese</div>
+                        </label>
+                        <label class="cursor-pointer whitespace-nowrap shrink-0">
+                            <input class="peer sr-only cuisine-checkbox" type="checkbox" value="Desserts"/>
+                            <div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-primary/20 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-surface-bright">Desserts</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2" for="rating">
+                            <span class="material-symbols-outlined text-[18px] text-secondary">star</span> Minimum Rating
+                        </label>
+                        <span class="font-headline-md text-headline-md text-on-surface" id="rating-val">4.0</span>
+                    </div>
+                    <div class="relative w-full h-2 bg-surface-container-highest rounded-full">
+                        <div class="absolute top-0 left-0 h-full bg-secondary rounded-full pointer-events-none" id="rating-fill" style="width: 80%;"></div>
+                        <input class="absolute top-1/2 -translate-y-1/2 w-full h-full appearance-none bg-transparent outline-none m-0" id="rating" max="5.0" min="3.0" step="0.1" type="range" value="4.0"/>
+                    </div>
+                    <div class="flex justify-between text-on-surface-variant font-label-sm text-label-sm opacity-50">
+                        <span>3.0</span>
+                        <span>5.0</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2" for="vibe">
+                        <span class="material-symbols-outlined text-[18px]">mood</span> Additional Vibe
+                    </label>
+                    <textarea class="w-full bg-surface-container-low border border-outline-variant text-on-surface font-body-md text-body-md rounded-lg py-3 px-4 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors placeholder:text-surface-variant resize-none" id="vibe" placeholder="e.g., 'quiet workspace', 'romantic date night'..." rows="3"></textarea>
+                </div>
+
+                <div class="pt-stack-sm">
+                    <button class="w-full bg-gradient-to-r from-[#ff5722] to-[#b02f00] hover:from-[#ffb5a0] hover:to-[#ff5722] text-white font-headline-md text-headline-md py-4 rounded-xl shadow-[0px_4px_14px_rgba(255,87,34,0.4)] transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center gap-2 group" type="submit">
+                        Get AI Recommendations
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- SECTION: Processing -->
+    <section id="view-processing" class="view-section flex-col items-center justify-center min-h-screen relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30" id="particles-js"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center w-full max-w-md px-margin-mobile">
+            <div class="loader-ring mb-stack-lg shadow-[0px_10px_30px_rgba(255,87,34,0.3)]"></div>
+            <div class="relative w-full h-8 mb-stack-lg font-headline-md text-headline-md text-primary tracking-wide">
+                <p class="fade-text active" id="msg-0">Scanning restaurants near you...</p>
+                <p class="fade-text" id="msg-1">Filtering by your budget and taste...</p>
+                <p class="fade-text" id="msg-2">Asking our AI chef for recommendations...</p>
+                <p class="fade-text" id="msg-3">Almost ready — cooking up results!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Results -->
+    <section id="view-results" class="view-section flex-col flex-grow px-margin-mobile md:px-margin-desktop py-[100px] w-full max-w-container-max mx-auto min-h-screen">
+        <header class="mb-stack-lg flex flex-col gap-stack-md">
+            <div class="flex items-center gap-4">
+                <button onclick="showView('view-preferences')" class="p-2 rounded-full hover:bg-surface-bright transition-colors text-on-surface-variant">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+                </button>
+                <h1 class="font-headline-lg text-headline-lg text-on-surface">Your AI Picks</h1>
+            </div>
+            <div class="flex flex-wrap gap-3 mt-2 md:mt-0" id="results-filters">
+                <!-- Filter chips dynamically populated -->
+            </div>
+        </header>
+
+        <div class="ai-gradient-border p-6 mb-stack-lg glow-shadow">
+            <div class="flex items-start gap-4">
+                <div class="p-3 rounded-full bg-primary/20 text-primary shrink-0">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                </div>
+                <div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Groq AI Insights</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant" id="ai-summary-text">
+                        <!-- Summary populated here -->
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter" id="recommendations-container">
+            <!-- Cards populated dynamically via JS -->
+        </div>
+    </section>
+
+    <!-- SECTION: No Results -->
+    <section id="view-no-results" class="view-section flex-col items-center justify-center min-h-screen pt-[72px] pb-stack-lg px-margin-mobile md:px-margin-desktop relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
+            <div class="w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-primary/5 rounded-full blur-[100px] opacity-50"></div>
+        </div>
+        <div class="relative z-10 flex flex-col items-center justify-center text-center max-w-2xl mx-auto w-full">
+            <h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-stack-sm tracking-tight">
+                No Restaurants Found
+            </h1>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-stack-lg leading-relaxed">
+                We couldn't find matches for your exact filters. Try broadening your search.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <button onclick="showView('view-preferences')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-label-md text-label-md font-semibold bg-primary text-on-primary hover:bg-primary-fixed-dim transition-all duration-300 active:scale-95 shadow-[0px_4px_20px_rgba(255,87,34,0.3)] hover:shadow-[0px_8px_30px_rgba(255,87,34,0.4)] flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">tune</span> Adjust Preferences
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>

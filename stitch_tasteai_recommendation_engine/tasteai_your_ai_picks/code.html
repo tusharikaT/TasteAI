@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TasteAI - Recommendation Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#002204",
+                        "on-secondary-fixed": "#281900",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#ff5722",
+                        "primary-fixed-dim": "#ffb5a0",
+                        "on-secondary": "#432c00",
+                        "surface-dim": "#131313",
+                        "on-tertiary-container": "#003208",
+                        "secondary-container": "#feb300",
+                        "tertiary-container": "#41a447",
+                        "secondary": "#ffd799",
+                        "tertiary-fixed": "#94f990",
+                        "on-surface": "#e5e2e1",
+                        "outline-variant": "#5b4039",
+                        "on-primary-fixed": "#3b0900",
+                        "on-background": "#e5e2e1",
+                        "tertiary-fixed-dim": "#78dc77",
+                        "secondary-fixed-dim": "#ffba38",
+                        "outline": "#ab8980",
+                        "tertiary": "#78dc77",
+                        "surface-container": "#201f1f",
+                        "surface-tint": "#ffb5a0",
+                        "surface": "#131313",
+                        "on-surface-variant": "#e4beb4",
+                        "on-primary-fixed-variant": "#862200",
+                        "secondary-fixed": "#ffdeac",
+                        "on-secondary-container": "#6a4800",
+                        "on-error": "#690005",
+                        "background": "#131313",
+                        "inverse-primary": "#b02f00",
+                        "surface-bright": "#3a3939",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-fixed": "#ffdbd1",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#541200",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#604100",
+                        "on-primary": "#5f1500",
+                        "primary": "#ffb5a0",
+                        "on-tertiary": "#00390a",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "surface-variant": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "margin-desktop": "48px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "margin-mobile": "20px",
+                        "stack-sm": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-hero-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-hero": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "display-hero-mobile": ["36px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-shadow {
+            box-shadow: 0px 10px 30px rgba(255, 87, 34, 0.15);
+        }
+        .ai-gradient-border {
+            position: relative;
+            background: theme('colors.surface-container-low');
+            background-clip: padding-box;
+            border: solid 1px transparent;
+            border-radius: theme('borderRadius.xl');
+        }
+        .ai-gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -1px;
+            border-radius: inherit;
+            background: linear-gradient(to right, theme('colors.primary'), theme('colors.secondary'));
+        }
+        .progress-bar-fill {
+            transition: width 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-[72px]">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-[0px_10px_30px_rgba(255,87,34,0.15)] hidden md:block">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-display-hero-mobile text-display-hero-mobile md:font-display-hero md:text-display-hero text-primary tracking-tight">TasteAI</div>
+<div class="hidden"></div>
+<button class="font-label-md text-label-md text-primary font-bold hover:opacity-80 transition-opacity active:scale-95 transition-transform flex items-center gap-2 px-4 py-2 rounded-full border border-primary">
+                New Search
+            </button>
+</div>
+</nav>
+<!-- Mobile TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-[0px_10px_30px_rgba(255,87,34,0.15)] md:hidden">
+<div class="flex justify-between items-center px-margin-mobile py-4 max-w-container-max mx-auto">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="font-display-hero-mobile text-display-hero-mobile text-primary tracking-tight">TasteAI</div>
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+</div>
+</nav>
+<div class="flex-grow flex flex-col md:flex-row max-w-container-max mx-auto w-full">
+<!-- SideNavBar (Shared Component) - Hidden on Mobile, Shown on Desktop -->
+<aside class="hidden md:flex flex-col h-full py-stack-lg w-64 fixed left-0 top-[72px] bg-surface-container dark:bg-surface-dim shadow-lg transition-all duration-300 z-40">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A sophisticated close-up portrait of a user profile avatar. The subject is softly lit with warm, cinematic lighting against a dark, moody background, reflecting a high-end culinary aesthetic. Deep blacks and rich tones dominate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4V7rATWqJuThN2iCerDk9wUh_WeDwqAk13BjqdWoVDu-H-hZnzLbM46VYaIIa0TXNqCz7ae7KRM_MGVUgDPJIhJNiY-SYmNvBFDBBYClUqHU5lWs1qPM71HyuDHdkUDVYIsv8QdBtWRyDVdcA-WozfM6iSaVjbTZEYq56vc6vWz7cJbhuJD7IgID0IMBs8MdINyHeNEHnWj2Wh2rbhHtH3BzVV1-T-Q9_38US0I6WstYBQN24XiLwHqP-_0xLcIeasKonR1z2gQ"/>
+</div>
+<div>
+<h2 class="font-label-md text-label-md text-on-surface font-semibold">TasteAI Explorer</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Premium Culinary Guide</p>
+</div>
+</div>
+<nav class="flex-grow flex flex-col gap-2 px-4">
+<!-- Discover is implicitly active here as it's search results, but the prompt says 'Recommendation Results', let's highlight Discover -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 font-body-md text-body-md transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+                    Discover
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright font-body-md text-body-md transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark</span>
+                    Saved
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright font-body-md text-body-md transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history</span>
+                    History
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright font-body-md text-body-md transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+                    Profile
+                </a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 rounded-lg bg-surface-container-high border border-outline-variant text-secondary font-label-md text-label-md hover:bg-surface-bright transition-all duration-300">
+                    Upgrade to Gold
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-stack-lg md:ml-64 w-full">
+<!-- Header Section -->
+<header class="mb-stack-lg flex flex-col gap-stack-md">
+<div class="flex items-center gap-4 hidden md:flex">
+<button class="p-2 rounded-full hover:bg-surface-bright transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Your AI Picks</h1>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-3 mt-2 md:mt-0">
+<div class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container border border-outline-variant font-label-sm text-label-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                        Delhi
+                    </div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container border border-outline-variant font-label-sm text-label-sm text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">local_pizza</span>
+                        Italian
+                    </div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container border border-outline-variant font-label-sm text-label-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[16px]" style="font-variation-settings: 'FILL' 1;">payments</span>
+                        Medium
+                    </div>
+</div>
+</header>
+<!-- AI Summary Banner -->
+<div class="ai-gradient-border p-6 mb-stack-lg glow-shadow">
+<div class="flex items-start gap-4">
+<div class="p-3 rounded-full bg-primary/20 text-primary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Groq AI Insights</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Based on your desire for Italian cuisine in Delhi with a moderate budget, these selections focus on highly-rated, authentic trattorias and modern cafes. They offer excellent pasta dishes, warm atmospheres, and exceptional value for money.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Restaurant Cards Grid/Stack -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col group hover:shadow-[0px_10px_30px_rgba(255,87,34,0.25)] transition-all duration-300">
+<div class="relative h-48 w-full">
+<img alt="Restaurant Image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="High-resolution, appetizing close-up of a beautifully plated Italian pasta dish in a dimly lit, high-end cafe. Warm amber lighting highlights the textures of the fresh basil, rich tomato sauce, and grated parmesan against a dark, rustic wooden table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoiYBp9XWYspDXdZJyG1uiHHZIZIEYp5KZ2kVzVI1C-6CKWNqjtiUxohkJ0e7rpedcUqhZvC6hsyVOlRFbrd7WQC5heDR-0KwmLLnd5xghxeSIGhnGtYqR4VCZV0TgMFZlABoHO2FM-RIBv_RkhxXzPQW5jVgVrEKDxeSlLjBhK_0DVI0BNWNAg6_pmTvMPPuaqMWfiksxx35ffRBqO6ly6Hq5d5YiQzKm_hmKiJq2I5YhGAMLC011xjDvY6yQmlggvBAhbMsyZg"/>
+<div class="absolute top-4 left-4 w-8 h-8 rounded-full bg-primary flex items-center justify-center font-label-md text-label-md text-on-primary font-bold shadow-lg">
+                            #1
+                        </div>
+<button class="absolute top-4 right-4 p-2 rounded-full bg-surface/50 backdrop-blur-md text-on-surface hover:bg-surface transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark_border</span>
+</button>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface leading-tight">Diggin</h2>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-2 py-1 rounded">$$</span>
+</div>
+<div class="flex items-center gap-2 mb-4 font-label-sm text-label-sm text-on-surface-variant">
+<span>Italian, Cafe</span>
+<span>•</span>
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1">4.8</span>
+</div>
+<span>•</span>
+<span>Chanakyapuri</span>
+</div>
+<!-- Match Score -->
+<div class="mb-4">
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">AI Match Score</span>
+<span class="text-primary font-semibold">98%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary progress-bar-fill" style="width: 98%;"></div>
+</div>
+</div>
+<!-- AI Explanation -->
+<div class="bg-primary/5 rounded-lg p-3 mb-4 border border-primary/10">
+<p class="font-body-md text-body-md text-on-surface-variant italic flex items-start gap-2 text-sm">
+<span class="material-symbols-outlined text-primary text-[16px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                                Perfectly matches your Italian preference with highly-rated wood-fired pizzas and a cozy, aesthetic ambiance.
+                            </p>
+</div>
+<!-- Suggested Dishes -->
+<div class="flex flex-wrap gap-2 mb-6 mt-auto">
+<span class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant font-label-sm text-label-sm text-on-surface-variant">Truffle Mushroom Pizza</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant font-label-sm text-label-sm text-on-surface-variant">Ravioli</span>
+</div>
+<button class="w-full py-3 rounded-lg bg-surface-container-high hover:bg-surface-bright border border-outline-variant font-label-md text-label-md text-on-surface transition-colors flex items-center justify-center gap-2 mt-auto">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">map</span>
+                            View on Map
+                        </button>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col group hover:shadow-[0px_10px_30px_rgba(255,87,34,0.25)] transition-all duration-300">
+<div class="relative h-48 w-full">
+<img alt="Restaurant Image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Elegant presentation of a classic Italian Margherita pizza with charred crust edges, fresh mozzarella, and basil leaves. Set in a modern, dark-themed restaurant environment with subtle spotlighting that enhances the vibrant red of the tomato sauce." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoUhj9KKc7RZs54o0WLCdLsF1ZLLaQ1T9plsESOAxrzMzj5W_sAD8UCOjS0zp7VmXyqLQq7lG2FRJv6-O0z1jXHjw6HbN9raKysYKwTdkLdLzOfeCwwGGM_LoJV8LGtpQp8HF4-wf_mjDl9nAaeLdzt_cmTNDOSMZIQe-NFqGKuO3gML3UkpJwgJpRaZZATXFF-VyZ38WwqNTGx56Q5Gu4_U_gC4tknXoKnmRduxf48PrOH9H7_5de0GGH0CiaGa9ThsEOwts69Q"/>
+<div class="absolute top-4 left-4 w-8 h-8 rounded-full border-2 border-primary bg-surface/80 backdrop-blur-sm flex items-center justify-center font-label-md text-label-md text-primary font-bold shadow-sm">
+                            #2
+                        </div>
+<button class="absolute top-4 right-4 p-2 rounded-full bg-surface/50 backdrop-blur-md text-on-surface hover:bg-surface transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark_border</span>
+</button>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface leading-tight">Evoo - Eatery</h2>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-2 py-1 rounded">$$</span>
+</div>
+<div class="flex items-center gap-2 mb-4 font-label-sm text-label-sm text-on-surface-variant">
+<span>Italian, Pizzeria</span>
+<span>•</span>
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1">4.7</span>
+</div>
+<span>•</span>
+<span>Malviya Nagar</span>
+</div>
+<!-- Match Score -->
+<div class="mb-4">
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">AI Match Score</span>
+<span class="text-primary font-semibold">94%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary progress-bar-fill" style="width: 94%;"></div>
+</div>
+</div>
+<!-- AI Explanation -->
+<div class="bg-primary/5 rounded-lg p-3 mb-4 border border-primary/10">
+<p class="font-body-md text-body-md text-on-surface-variant italic flex items-start gap-2 text-sm">
+<span class="material-symbols-outlined text-primary text-[16px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                                Exceptional Napoli-style pizzas. Hits your medium budget sweet spot perfectly.
+                            </p>
+</div>
+<!-- Suggested Dishes -->
+<div class="flex flex-wrap gap-2 mb-6 mt-auto">
+<span class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant font-label-sm text-label-sm text-on-surface-variant">Diavola Pizza</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant font-label-sm text-label-sm text-on-surface-variant">Tiramisu</span>
+</div>
+<button class="w-full py-3 rounded-lg bg-surface-container-high hover:bg-surface-bright border border-outline-variant font-label-md text-label-md text-on-surface transition-colors flex items-center justify-center gap-2 mt-auto">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">map</span>
+                            View on Map
+                        </button>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col group hover:shadow-[0px_10px_30px_rgba(255,87,34,0.25)] transition-all duration-300">
+<div class="relative h-48 w-full">
+<img alt="Restaurant Image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A moody, high-end shot of a creamy Risotto dish served in a wide white bowl, garnished with microgreens. The dark, minimalist table setting emphasizes the culinary artistry and premium dining experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbhe7w0Au5N4_i5KYdzRYv_szUpZQDr_mNzgNyuj2pTpOeOYqKKUT7L0OZ_HY18Oi2KXIqG-TyGbIpvYaDdL51g9D1UKGMV_fA3IKI_9i62UQmz9PNfhH7hKj4kDsp75OBclwAKpbMiKnkdRDzQFexXLa-gCpR40IgWPan_FRCuEJdNPlEK2fRZ1-ttx3OP7c-q0jJJfN8gEXrM1A39vfaVRABeCu5cXQ1ApsQ3wsydnndPkAeR4DFFF9BZFqEhcwcnbjDVoe2oA"/>
+<div class="absolute top-4 left-4 w-8 h-8 rounded-full border-2 border-primary bg-surface/80 backdrop-blur-sm flex items-center justify-center font-label-md text-label-md text-primary font-bold shadow-sm">
+                            #3
+                        </div>
+<button class="absolute top-4 right-4 p-2 rounded-full bg-surface/50 backdrop-blur-md text-on-surface hover:bg-surface transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark_border</span>
+</button>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface leading-tight">Big Chill</h2>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-2 py-1 rounded">$$</span>
+</div>
+<div class="flex items-center gap-2 mb-4 font-label-sm text-label-sm text-on-surface-variant">
+<span>Italian, Desserts</span>
+<span>•</span>
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1">4.6</span>
+</div>
+<span>•</span>
+<span>Khan Market</span>
+</div>
+<!-- Match Score -->
+<div class="mb-4">
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">AI Match Score</span>
+<span class="text-primary font-semibold">89%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary progress-bar-fill" style="width: 89%;"></div>
+</div>
+</div>
+<!-- AI Explanation -->
+<div class="bg-primary/5 rounded-lg p-3 mb-4 border border-primary/10">
+<p class="font-body-md text-body-md text-on-surface-variant italic flex items-start gap-2 text-sm">
+<span class="material-symbols-outlined text-primary text-[16px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                                Classic comfort Italian food. Known for generous portions and iconic desserts.
+                            </p>
+</div>
+<!-- Suggested Dishes -->
+<div class="flex flex-wrap gap-2 mb-6 mt-auto">
+<span class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant font-label-sm text-label-sm text-on-surface-variant">Penne Vodka</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant font-label-sm text-label-sm text-on-surface-variant">Mississippi Mud Pie</span>
+</div>
+<button class="w-full py-3 rounded-lg bg-surface-container-high hover:bg-surface-bright border border-outline-variant font-label-md text-label-md text-on-surface transition-colors flex items-center justify-center gap-2 mt-auto">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">map</span>
+                            View on Map
+                        </button>
+</div>
+</article>
+</div>
+</main>
+</div>
+<!-- Script to ensure progress bars animate on load -->
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const bars = document.querySelectorAll('.progress-bar-fill');
+            bars.forEach(bar => {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = targetWidth;
+                }, 100);
+            });
+        });
+    </script>
+</body></html>
